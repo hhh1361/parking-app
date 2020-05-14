@@ -5,13 +5,12 @@ import Header from './header/Header'
 import './Table.css'
 
 function Table(props) {
-	const { carList, isLoading } = props
-	console.log('table rerender: ', isLoading)
-	const optionsList = ['№', 'Номер', 'Марка', 'Модель', 'Организация']
+	console.log('Rerender Table')
+	const { carList } = props
+	const optionsList = ['№', 'Гос. номер', 'Марка', 'Модель', 'Арендатор']
 	return (
-		<>
-			{isLoading ? <div className="loader" /> : null}
-			<table className="table table-dark">
+		<div className="container">
+			<table className="table table-dark table-hover">
 				<thead>
 					<tr>
 						{optionsList.map(e => (
@@ -27,7 +26,7 @@ function Table(props) {
 						: null}
 				</tbody>
 			</table>
-		</>
+		</div>
 	)
 }
 
