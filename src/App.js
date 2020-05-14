@@ -2,40 +2,15 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Table from './components/table/Table'
 import Header from './components/header/Header'
+import Spinner from './components/spinner/Spinner'
 import Form from './components/form/Form'
 import './App.css'
+import getAllCars from './api/getAllCars'
 
 function App(props) {
 	const { getCarList } = props
-	const getCar = () => {
-		console.log('Start fetch')
-		const proxy = 'https://cors-anywhere.herokuapp.com/'
-		const url = new URL('http://80.249.84.47:11000/')
-		const api = 'api/cars/'
 
-		fetch(proxy + url + api, {
-			method: 'GET',
-			headers: new Headers({
-				Accept: 'application/json',
-				'Content-Type': 'application/json',
-			}),
-		})
-			.then(res => {
-				console.log('Response: ', res)
-				return res.json()
-			})
-			.then(
-				result => {
-					console.log('Result: ', result)
-					getCarList(result, false)
-				},
-
-				error => {
-					console.log('Error: ', error)
-				},
-			)
-	}
-	getCar()
+	getAllCars(getCarList, false)
 
 	const addCar = () => {
 		console.log('Start fetch')
@@ -109,6 +84,7 @@ function App(props) {
 			<Header />
 			{/* <Form /> */}
 			<Table />
+			<Spinner />
 		</>
 	)
 }

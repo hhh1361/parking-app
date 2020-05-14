@@ -19,6 +19,7 @@
     "node": true
   },
   "rules": {
+    "no-console": "off",
     "no-plusplus": 0,
     "no-confusing-arrow": 0,
     "no-restricted-syntax": 0,
