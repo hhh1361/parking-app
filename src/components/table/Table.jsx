@@ -3,11 +3,23 @@ import { connect } from 'react-redux'
 import Row from './row/Row'
 import Header from './header/Header'
 import './Table.css'
+import sortSourceData from '../../api/tableSortLogic'
 
 function Table(props) {
 	console.log('Rerender Table')
-	const { carList } = props
-	const optionsList = ['№', 'Гос. номер', 'Марка', 'Модель', 'Арендатор']
+
+	const { carList, sort } = props
+	const optionsList = [
+		'№',
+		'car_number',
+		'car_brand',
+		'car_model',
+		'car_tenant',
+	]
+	const sortedArray = sortSourceData(sort, carList)
+
+	console.log(sortedArray)
+
 	return (
 		<div className="container">
 			<table className="table table-dark table-hover">
@@ -20,7 +32,7 @@ function Table(props) {
 				</thead>
 				<tbody>
 					{carList.length
-						? carList.map((e, index) => (
+						? sortedArray.map((e, index) => (
 								<Row info={e} key={e.id} rowNumber={index} />
 						  ))
 						: null}
@@ -33,7 +45,7 @@ function Table(props) {
 const mapStateToProps = state => {
 	return {
 		carList: state.carList,
-		isLoading: state.isLoading,
+		sort: state.sort,
 	}
 }
 
