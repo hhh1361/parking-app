@@ -2,26 +2,26 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 function Header(props) {
-	const { header, carList, applyResult } = props
-	const optionsList = ['№', 'Гос. номер', 'Марка', 'Модель', 'Арендатор']
-	const sort = () => {
-		applyResult([])
-		applyResult(
-			carList.sort((a, b) => {
-				if (a.car_number > b.car_number) {
-					return 1
-				}
-				if (a.car_number < b.car_number) {
-					return -1
-				}
-				return 0
-			}),
-		)
+	const { header, carList, applyResult, sort, setSortField } = props
+	const optionsList = {
+		'№': '№',
+		car_number: 'Гос. номер',
+		car_brand: 'Марка',
+		car_model: 'Модель',
+		car_tenant: 'Арендатор',
+	}
+
+	const sortHandler = () => {
+		if (sort.field !== header) {
+			setSortField({ field: header, reverse: false })
+		} else {
+			setSortField({ field: header, reverse: !sort.reverse })
+		}
 	}
 
 	return (
 		<td>
-			<div onClick={sort}>{header}</div>
+			<div onClick={sortHandler}>{optionsList[header]}</div>
 		</td>
 	)
 }
@@ -29,13 +29,14 @@ function Header(props) {
 const mapStateToProps = state => {
 	return {
 		carList: state.carList,
+		sort: state.sort,
 	}
 }
 const mapsDispatchToProps = dispatch => ({
-	applyResult: carList => {
+	setSortField: field => {
 		dispatch({
-			type: 'GET_CAR_LIST',
-			payload: carList,
+			type: 'SET_SORT_FIELD',
+			payload: field,
 		})
 	},
 })

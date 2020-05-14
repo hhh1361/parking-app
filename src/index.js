@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 const initialState = {
 	carList: [],
 	isLoading: true,
+	sort: { field: 'default', reverse: false },
 }
 
 function information(state = initialState, action) {
@@ -24,13 +25,10 @@ function information(state = initialState, action) {
 				...state,
 				isLoading: action.payload,
 			}
-		case 'ADD_NAME':
+		case 'SET_SORT_FIELD':
 			return {
 				...state,
-				information: {
-					...state.information,
-					input: { ...state.information.input, name: action.payload },
-				},
+				sort: action.payload,
 			}
 		case 'ADD_SURNAME':
 			return {
