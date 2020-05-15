@@ -1,13 +1,20 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import './Header.css'
 
 function Header(props) {
-	const { header, carList, applyResult, sort, setSortField } = props
+	const { header, sort, setSortField } = props
 	const optionsList = {
 		car_number: 'Гос. номер',
 		car_brand: 'Марка',
 		car_model: 'Модель',
 		car_tenant: 'Арендатор',
+	}
+	let headerClassName
+	if (sort.field === header) {
+		headerClassName = sort.reverse ? 'triangle-up' : 'triangle-down'
+	} else {
+		headerClassName = 'triangle-non'
 	}
 
 	const sortHandler = () => {
@@ -20,7 +27,10 @@ function Header(props) {
 
 	return (
 		<td>
-			<div onClick={sortHandler}>{optionsList[header]}</div>
+			<div className="container" onClick={sortHandler}>
+				<div className={headerClassName} />
+				<div className="header-text">{optionsList[header]}</div>
+			</div>
 		</td>
 	)
 }

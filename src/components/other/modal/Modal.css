@@ -1,0 +1,5 @@
+#myModal {
+  position: fixed;
+  left: calc(50% - 218px) ;
+  top: calc(30%) ;
+}

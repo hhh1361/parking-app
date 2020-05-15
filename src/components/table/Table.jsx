@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import $ from 'jquery'
 import Row from './row/Row'
 import Header from './header/Header'
 import './Table.css'
@@ -11,8 +12,6 @@ function Table(props) {
 	const { carList, sort } = props
 	const optionsList = ['car_number', 'car_brand', 'car_model', 'car_tenant']
 	const sortedArray = sortSourceData(sort, carList)
-
-	console.log(sortedArray)
 
 	return (
 		<div className="container">
