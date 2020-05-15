@@ -8,8 +8,13 @@ function Row(props) {
 	const { id, car_brand, car_model, car_number, car_tenant } = info
 	const filter = e => {
 		e.preventDefault()
-		console.log(e.target)
-		changeModal(true, car_tenant.name)
+		console.log({ state: true, field: car_tenant.name })
+		const modalObject = {
+			state: true,
+			field: car_tenant.name,
+			id: car_tenant.id,
+		}
+		changeModal(modalObject)
 	}
 
 	return (
@@ -32,9 +37,8 @@ const mapStateToProps = state => {
 
 const mapsDispatchToProps = dispatch => ({
 	changeModal: value => {
-		console.log('send')
 		dispatch({
-			type: 'IS_MODAL',
+			type: 'SET_MODAL',
 			payload: value,
 		})
 	},

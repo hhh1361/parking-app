@@ -2,15 +2,28 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import './Modal.css'
+import getAllTenantsCars from '../../../api/getAllTenantsCars'
+import getAllCars from '../../../api/getAllCars'
 
 function Modal(props) {
-	const { isModal, closeModal } = props
+	const { modal, closeModal, setLoading, getFilteredCarList } = props
 
-	console.log('is modal component: ', isModal)
+	console.log('is modal component: ', modal.state)
+
+	const setFilter = () => {
+		setLoading(true)
+		getAllTenantsCars(getFilteredCarList, false, modal.id)
+		closeModal()
+	}
+	const resetFilter = () => {
+		setLoading(true)
+		getAllCars(getFilteredCarList, false)
+		closeModal()
+	}
 
 	return (
 		<>
-			{isModal ? (
+			{modal.state ? (
 				<div id="myModal">
 					<div className="modal-dialog">
 						<div className="modal-content">
@@ -23,10 +36,18 @@ function Modal(props) {
 
 							<div className="modal-body">
 								<div className="container">
-									<button type="button" className="btn btn-primary">
-										{`Установить фильтр по значению ${isModal}`}
+									<button
+										type="button"
+										className="btn btn-primary"
+										onClick={setFilter}
+									>
+										{`Установить фильтр по значению ${modal.field}`}
 									</button>
-									<button type="button" className="btn btn-danger">
+									<button
+										type="button"
+										className="btn btn-danger"
+										onClick={resetFilter}
+									>
 										Сбросить фильтр
 									</button>
 								</div>
@@ -41,14 +62,30 @@ function Modal(props) {
 
 const mapStateToProps = state => {
 	return {
-		isModal: state.isModal,
+		modal: state.modal,
 	}
 }
 
 const mapsDispatchToProps = dispatch => ({
+	getFilteredCarList: (carList, isLoading) => {
+		dispatch({
+			type: 'GET_CAR_LIST',
+			payload: carList,
+		})
+		dispatch({
+			type: 'IS_LOADING',
+			payload: isLoading,
+		})
+	},
+	setLoading: () => {
+		dispatch({
+			type: 'IS_LOADING',
+			payload: true,
+		})
+	},
 	closeModal: () => {
 		dispatch({
-			type: 'IS_MODAL',
+			type: 'CLOSE_MODAL',
 			payload: false,
 		})
 	},
