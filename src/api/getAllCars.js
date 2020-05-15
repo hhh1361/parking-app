@@ -1,7 +1,6 @@
 import get from './get/Get'
 
-const api = 'api/cars/'
-
 export default function getAllCars(func, param) {
+	const api = 'api/cars/'
 	get(api, func, param)
 }

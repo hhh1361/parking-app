@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 const initialState = {
 	carList: [],
 	isLoading: true,
+	isModal: false,
 	sort: { field: 'default', reverse: false },
 }
 
@@ -30,13 +31,11 @@ function information(state = initialState, action) {
 				...state,
 				sort: action.payload,
 			}
-		case 'ADD_SURNAME':
+		case 'IS_MODAL':
+			console.log('catch', action.payload)
 			return {
 				...state,
-				information: {
-					...state.information,
-					input: { ...state.information.input, surname: action.payload },
-				},
+				isModal: action.payload,
 			}
 		case 'ADD_GENDER':
 			return {

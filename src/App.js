@@ -2,7 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Table from './components/table/Table'
 import Header from './components/header/Header'
-import Spinner from './components/spinner/Spinner'
+import Spinner from './components/other/spinner/Spinner'
+import Modal from './components/other/modal/Modal'
 import Form from './components/form/Form'
 import './App.css'
 import getAllCars from './api/getAllCars'
@@ -81,10 +82,10 @@ function App(props) {
 	}
 	return (
 		<>
-			<Header />
-			{/* <Form /> */}
+			{/* <Header /> */}
 			<Table />
 			<Spinner />
+			<Modal />
 		</>
 	)
 }

@@ -20,6 +20,18 @@
   },
   "rules": {
     "no-console": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": [
+      "error",
+      {
+        "handlers": [
+          "onMouseDown",
+          "onMouseUp",
+          "onKeyPress",
+          "onKeyDown",
+          "onKeyUp",
+        ],
+      },
+    ],
     "no-plusplus": 0,
     "no-confusing-arrow": 0,
     "no-restricted-syntax": 0,
