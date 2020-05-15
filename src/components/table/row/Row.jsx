@@ -1,11 +1,10 @@
 /* eslint-disable camelcase */
 import React from 'react'
 import { connect } from 'react-redux'
-import Modal from '../../other/modal/Modal'
 
 function Row(props) {
 	const { info, changeModal } = props
-	const { id, car_brand, car_model, car_number, car_tenant } = info
+	const { car_brand, car_model, car_number, car_tenant, car_territory } = info
 	const filter = e => {
 		e.preventDefault()
 		console.log({ state: true, field: car_tenant.name })
@@ -24,6 +23,7 @@ function Row(props) {
 				<td>{car_brand ? car_brand.name : null}</td>
 				<td>{car_model ? car_model.name : null}</td>
 				<td onClick={filter}>{car_tenant.name}</td>
+				<td>{car_territory}</td>
 			</tr>
 		</>
 	)

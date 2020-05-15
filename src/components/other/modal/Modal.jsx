@@ -8,8 +8,6 @@ import getAllCars from '../../../api/getAllCars'
 function Modal(props) {
 	const { modal, closeModal, setLoading, getFilteredCarList } = props
 
-	console.log('is modal component: ', modal.state)
-
 	const setFilter = () => {
 		setLoading(true)
 		getAllTenantsCars(getFilteredCarList, false, modal.id)

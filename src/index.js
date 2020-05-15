@@ -12,6 +12,7 @@ const initialState = {
 	isLoading: true,
 	modal: { state: false, field: undefined, id: undefined },
 	sort: { field: 'default', reverse: false },
+	onTerritory: [],
 }
 
 function information(state = initialState, action) {
@@ -44,13 +45,10 @@ function information(state = initialState, action) {
 					state: action.payload,
 				},
 			}
-		case 'ADD_COMPANY':
+		case 'GET_CARS_ON_TERRITORY':
 			return {
 				...state,
-				information: {
-					...state.information,
-					input: { ...state.information.input, company: action.payload },
-				},
+				onTerritory: action.payload,
 			}
 		case 'ADD_TIMEZONE':
 			return {
