@@ -7,12 +7,10 @@ import './Table.css'
 import sortSourceData from '../../api/tableSortLogic'
 
 function Table(props) {
-	console.log('Rerender Table')
-
-	const { carList, sort } = props
+	const { carList, sort, modal } = props
 	const optionsList = ['car_number', 'car_brand', 'car_model', 'car_tenant']
 	const sortedArray = sortSourceData(sort, carList)
-
+	console.log('Rerender Table', sort)
 	return (
 		<div className="container">
 			<table className="table table-dark table-hover">
@@ -37,6 +35,7 @@ const mapStateToProps = state => {
 	return {
 		carList: state.carList,
 		sort: state.sort,
+		modal: state.modal,
 	}
 }
 
