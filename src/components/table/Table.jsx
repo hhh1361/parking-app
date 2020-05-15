@@ -1,16 +1,22 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import $ from 'jquery'
 import Row from './row/Row'
 import Header from './header/Header'
 import './Table.css'
 import sortSourceData from '../../api/tableSortLogic'
 
 function Table(props) {
-	const { carList, sort, modal } = props
-	const optionsList = ['car_number', 'car_brand', 'car_model', 'car_tenant']
+	const { carList, sort, onTerritory } = props
+	const optionsList = [
+		'car_number',
+		'car_brand',
+		'car_model',
+		'car_tenant',
+		'car_territory',
+	]
 	const sortedArray = sortSourceData(sort, carList)
-	console.log('Rerender Table', sort)
+
+	console.log('Rerender Table', onTerritory)
 	return (
 		<div className="container">
 			<table className="table table-dark table-hover">
@@ -35,7 +41,7 @@ const mapStateToProps = state => {
 	return {
 		carList: state.carList,
 		sort: state.sort,
-		modal: state.modal,
+		onTerritory: state.onTerritory,
 	}
 }
 

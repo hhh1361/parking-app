@@ -9,6 +9,7 @@ function Header(props) {
 		car_brand: 'Марка',
 		car_model: 'Модель',
 		car_tenant: 'Арендатор',
+		car_territory: 'что-то',
 	}
 	let headerClassName
 	if (sort.field === header) {
