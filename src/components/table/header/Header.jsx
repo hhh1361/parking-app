@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 function Header(props) {
 	const { header, carList, applyResult, sort, setSortField } = props
 	const optionsList = {
-		'№': '№',
 		car_number: 'Гос. номер',
 		car_brand: 'Марка',
 		car_model: 'Модель',

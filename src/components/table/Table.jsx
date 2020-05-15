@@ -9,13 +9,7 @@ function Table(props) {
 	console.log('Rerender Table')
 
 	const { carList, sort } = props
-	const optionsList = [
-		'№',
-		'car_number',
-		'car_brand',
-		'car_model',
-		'car_tenant',
-	]
+	const optionsList = ['car_number', 'car_brand', 'car_model', 'car_tenant']
 	const sortedArray = sortSourceData(sort, carList)
 
 	console.log(sortedArray)
@@ -32,9 +26,7 @@ function Table(props) {
 				</thead>
 				<tbody>
 					{carList.length
-						? sortedArray.map((e, index) => (
-								<Row info={e} key={e.id} rowNumber={index} />
-						  ))
+						? sortedArray.map(e => <Row info={e} key={e.id} />)
 						: null}
 				</tbody>
 			</table>
