@@ -29,16 +29,37 @@ export default async function combinedGet(api1, api2, func, param) {
 	const array1 = await response[0].then(result => result)
 	const array2 = await response[1].then(result => result)
 
-	const allCars = array1.length > array2.length ? array1 : array2
-	const onTerritoryCars = array1.length <= array2.length ? array1 : array2
+	let allCars
+	let onTerritoryCars
 
-	allCars.forEach(i => {
-		if (onTerritoryCars.some(element => element.id === i.id)) {
-			i.car_territory = 'На парковке'
+	// define arrays
+	if (array1.length && array2.length) {
+		if (array1[0].time_in) {
+			onTerritoryCars = array1
+			allCars = array2
 		} else {
-			i.car_territory = 'Отсутствует'
+			onTerritoryCars = array2
+			allCars = array1
 		}
-	})
+	} else if (array1.length) {
+		allCars = array1
+	} else {
+		allCars = array2
+	}
+
+	console.log(allCars)
+	console.log(onTerritoryCars)
+
+	// combine if needed
+	if (onTerritoryCars) {
+		allCars.forEach(i => {
+			if (onTerritoryCars.some(element => element.id === i.id)) {
+				i.car_territory = 'На парковке'
+			} else {
+				i.car_territory = 'Отсутствует'
+			}
+		})
+	}
 
 	func(allCars, param)
 }
