@@ -24,7 +24,6 @@ function Header(props) {
 						/>
 					</div>
 				</div>
-
 				<div className="row">
 					<div className="col">
 						<div className="collapse multi-collapse" id="multiCollapseExample1">
