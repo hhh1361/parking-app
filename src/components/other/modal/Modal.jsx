@@ -46,7 +46,7 @@ function Modal(props) {
 							</div>
 
 							<div className="modal-body">
-								<div className="container">
+								<div className="container d-flex justify-content-between">
 									<button
 										type="button"
 										className="btn btn-primary"
@@ -63,6 +63,32 @@ function Modal(props) {
 									</button>
 								</div>
 							</div>
+
+							{modal.field === 'territory' ? (
+								<div className="modal-content">
+									<div className="modal-header">
+										<h4 className="modal-title">Действие с автомобилем</h4>
+									</div>
+									<div className="modal-body">
+										<div className="container d-flex justify-content-between">
+											<button
+												type="button"
+												className="btn btn-primary"
+												onClick={setFilter}
+											>
+												Прибытиe на парковку
+											</button>
+											<button
+												type="button"
+												className="btn btn-danger"
+												onClick={resetFilter}
+											>
+												Убытие с парковки
+											</button>
+										</div>
+									</div>
+								</div>
+							) : null}
 						</div>
 					</div>
 				</div>

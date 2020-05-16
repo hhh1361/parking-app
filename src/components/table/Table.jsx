@@ -19,7 +19,7 @@ function Table(props) {
 	console.log('Rerender Table', onTerritory)
 	return (
 		<div className="container">
-			<table className="table table-dark table-hover">
+			<table className="table table-dark table-hover table-bordered">
 				<thead>
 					<tr>
 						{optionsList.map(e => (
