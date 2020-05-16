@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Row from './row/Row'
-import Header from './header/Header'
+import TableHeader from './header/TableHeader'
 import './Table.css'
 import sortSourceData from '../../api/tableSortLogic'
 
@@ -23,7 +23,7 @@ function Table(props) {
 				<thead>
 					<tr>
 						{optionsList.map(e => (
-							<Header header={e} key={e} />
+							<TableHeader header={e} key={e} />
 						))}
 					</tr>
 				</thead>
