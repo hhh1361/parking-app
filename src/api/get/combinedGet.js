@@ -47,19 +47,15 @@ export default async function combinedGet(api1, api2, func, param) {
 		allCars = array2
 	}
 
-	console.log(allCars)
-	console.log(onTerritoryCars)
-
 	// combine if needed
 	if (onTerritoryCars) {
 		allCars.forEach(i => {
-			if (onTerritoryCars.some(element => element.id === i.id)) {
+			if (onTerritoryCars.some(element => element.car === i.id)) {
 				i.car_territory = true
 			} else {
 				i.car_territory = false
 			}
 		})
 	}
-
 	func(allCars, param)
 }

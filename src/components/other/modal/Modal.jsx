@@ -4,14 +4,17 @@ import { connect } from 'react-redux'
 import './Modal.css'
 import getAllTenantsCars from '../../../api/getAllTenantsCars'
 import getAllCars from '../../../api/getAllCars'
+import postCar from '../../../api/postCar'
 
 function Modal(props) {
 	const {
 		modal,
+		carList,
 		closeModal,
 		setLoading,
 		getFilteredCarList,
 		getParkedCarList,
+		setCarOnTerrytory,
 	} = props
 
 	const setFilter = () => {
@@ -29,6 +32,29 @@ function Modal(props) {
 	const resetFilter = () => {
 		setLoading(true)
 		getAllCars(getFilteredCarList, false)
+		closeModal()
+	}
+	const onTerritory = () => {
+		const body = {
+			time_in: new Date().toLocaleTimeString(),
+			days: new Date().toLocaleDateString(),
+			last_flag: false,
+			car: modal.carId,
+		}
+
+		setLoading(true)
+		postCar(setCarOnTerrytory, body, false, carList, 'POST')
+		closeModal()
+	}
+	const fromTerritory = () => {
+		const body = {
+			time_out: new Date().toLocaleTimeString(),
+			last_flag: true,
+			car: modal.carId,
+		}
+
+		setLoading(true)
+		postCar(setCarOnTerrytory, body, false, carList, 'PUT')
 		closeModal()
 	}
 
@@ -74,14 +100,14 @@ function Modal(props) {
 											<button
 												type="button"
 												className="btn btn-primary"
-												onClick={setFilter}
+												onClick={onTerritory}
 											>
 												Прибытиe на парковку
 											</button>
 											<button
 												type="button"
 												className="btn btn-danger"
-												onClick={resetFilter}
+												onClick={fromTerritory}
 											>
 												Убытие с парковки
 											</button>
@@ -100,6 +126,7 @@ function Modal(props) {
 const mapStateToProps = state => {
 	return {
 		modal: state.modal,
+		carList: state.carList,
 	}
 }
 
@@ -115,6 +142,16 @@ const mapsDispatchToProps = dispatch => ({
 		})
 	},
 	getFilteredCarList: (carList, isLoading) => {
+		dispatch({
+			type: 'GET_CAR_LIST',
+			payload: carList,
+		})
+		dispatch({
+			type: 'IS_LOADING',
+			payload: isLoading,
+		})
+	},
+	setCarOnTerrytory: (carList, isLoading) => {
 		dispatch({
 			type: 'GET_CAR_LIST',
 			payload: carList,

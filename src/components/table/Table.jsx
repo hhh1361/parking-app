@@ -6,7 +6,7 @@ import './Table.css'
 import sortSourceData from '../../api/tableSortLogic'
 
 function Table(props) {
-	const { carList, sort, onTerritory } = props
+	const { carList, sort } = props
 	const optionsList = [
 		'car_number',
 		'car_brand',
@@ -16,7 +16,7 @@ function Table(props) {
 	]
 	const sortedArray = sortSourceData(sort, carList)
 
-	console.log('Rerender Table', onTerritory)
+	// console.log('Rerender Table', carList)
 	return (
 		<div className="container">
 			<table className="table table-dark table-hover table-bordered">

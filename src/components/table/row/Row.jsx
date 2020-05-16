@@ -4,15 +4,24 @@ import { connect } from 'react-redux'
 
 function Row(props) {
 	const { info, changeModal } = props
-	const { car_brand, car_model, car_number, car_tenant, car_territory } = info
+	const {
+		car_brand,
+		car_model,
+		car_number,
+		car_tenant,
+		car_territory,
+		id,
+	} = info
 	const territoryValue = car_territory ? 'тут' : '-'
 	const filter = e => {
+		console.log(id)
 		e.preventDefault()
 		const modalObject = {
 			state: true,
 			field: e.target.className,
 			value: e.target.className === 'tenant' ? car_tenant.name : territoryValue,
 			id: e.target.className === 'tenant' ? car_tenant.id : null,
+			carId: id,
 		}
 		changeModal(modalObject)
 	}
