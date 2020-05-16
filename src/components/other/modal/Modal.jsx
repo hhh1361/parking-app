@@ -6,11 +6,24 @@ import getAllTenantsCars from '../../../api/getAllTenantsCars'
 import getAllCars from '../../../api/getAllCars'
 
 function Modal(props) {
-	const { modal, closeModal, setLoading, getFilteredCarList } = props
+	const {
+		modal,
+		closeModal,
+		setLoading,
+		getFilteredCarList,
+		getParkedCarList,
+	} = props
 
 	const setFilter = () => {
 		setLoading(true)
-		getAllTenantsCars(getFilteredCarList, false, modal.id)
+
+		if (modal.field === 'tenant') {
+			getAllTenantsCars(getFilteredCarList, false, modal.id)
+		}
+		if (modal.field === 'territory') {
+			getAllCars(getParkedCarList, false)
+		}
+
 		closeModal()
 	}
 	const resetFilter = () => {
@@ -39,7 +52,7 @@ function Modal(props) {
 										className="btn btn-primary"
 										onClick={setFilter}
 									>
-										{`Установить фильтр по значению ${modal.field}`}
+										{`Установить фильтр по значению ${modal.value}`}
 									</button>
 									<button
 										type="button"
@@ -65,6 +78,16 @@ const mapStateToProps = state => {
 }
 
 const mapsDispatchToProps = dispatch => ({
+	getParkedCarList: (carList, isLoading) => {
+		dispatch({
+			type: 'GET_CAR_LIST',
+			payload: carList.filter(e => !!e.car_territory),
+		})
+		dispatch({
+			type: 'IS_LOADING',
+			payload: isLoading,
+		})
+	},
 	getFilteredCarList: (carList, isLoading) => {
 		dispatch({
 			type: 'GET_CAR_LIST',
