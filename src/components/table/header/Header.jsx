@@ -29,8 +29,10 @@ function Header(props) {
 	return (
 		<td>
 			<div className="container" onClick={sortHandler}>
-				<div className={headerClassName} />
 				<div className="header-text">{optionsList[header]}</div>
+				<div className="container">
+					<div className={headerClassName} />
+				</div>
 			</div>
 		</td>
 	)
