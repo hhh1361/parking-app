@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import './Header.css'
+import './TableHeader.css'
 
-function Header(props) {
+function TableHeader(props) {
 	const { header, sort, setSortField } = props
 	const optionsList = {
 		car_number: 'Гос. номер',
@@ -53,4 +53,4 @@ const mapsDispatchToProps = dispatch => ({
 	},
 })
 
-export default connect(mapStateToProps, mapsDispatchToProps)(Header)
+export default connect(mapStateToProps, mapsDispatchToProps)(TableHeader)
