@@ -12,7 +12,7 @@ function Row(props) {
 		car_territory,
 		id,
 	} = info
-	const territoryValue = car_territory ? 'тут' : '-'
+	const territoryValue = car_territory ? 'Да' : 'Нет'
 	const filter = e => {
 		e.preventDefault()
 		const modalObject = {

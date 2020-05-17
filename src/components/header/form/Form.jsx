@@ -6,25 +6,32 @@ import postCar from '../../../api/postCar'
 import './Form.css'
 
 function Form(props) {
-	const { carList, brands, models, tenants, setLoading, sendCarInfo } = props
+	const {
+		carList,
+		brands,
+		models,
+		tenants,
+		input,
+		setLoading,
+		sendCarInfo,
+	} = props
 
-	console.log('brands: ', brands)
-	const data = {
-		car_number: '',
-		car_brand: '',
-		car_model: '',
-		car_tenant: '',
-	}
-
+	let carNumber
 	const inputHandler = e => {
-		data[e.target.id] = e.target.value
+		carNumber = e.target.value
+		input.car_number = e.target.value
 	}
 
 	const sendInfo = () => {
+		const data = {
+			car_number: carNumber,
+			car_brand: input.car_brand.id,
+			car_model: input.car_model.id,
+			car_tenant: input.car_tenant.id,
+		}
 		const api = 'api/cars/add/'
-
 		setLoading(true)
-		postCar(sendCarInfo, 'POST', api, data, carList)
+		postCar(sendCarInfo, 'POST', api, data, carList, input)
 	}
 
 	return (
@@ -42,21 +49,19 @@ function Form(props) {
 				</label>
 			</div>
 
-			<Option field="car_brand" options={brands} header="Марка" />
-			<Option field="car_model" options={models} header="Модель" />
-			<Option field="car_tenant" options={tenants} header="Организация" />
-
-			<div className="form-group">
-				<label htmlFor="car_model">
-					Организация
-					<input
-						type="text"
-						className="form-control"
-						id="car_tenant"
-						onKeyUp={inputHandler}
-					/>
-				</label>
-			</div>
+			<Option field="car_brand" input={input} options={brands} header="Марка" />
+			<Option
+				field="car_model"
+				input={input}
+				options={models}
+				header="Модель"
+			/>
+			<Option
+				field="car_tenant"
+				input={input}
+				options={tenants}
+				header="Организация"
+			/>
 
 			<div onClick={sendInfo}>КНОПКА</div>
 		</div>
@@ -69,6 +74,7 @@ const mapStateToProps = state => {
 		brands: state.brands,
 		models: state.models,
 		tenants: state.tenants,
+		input: state.input,
 	}
 }
 const mapsDispatchToProps = dispatch => ({
@@ -82,6 +88,12 @@ const mapsDispatchToProps = dispatch => ({
 			payload: isLoading,
 		})
 	},
+	// setInput: value => {
+	// 	dispatch({
+	// 		type: 'SET_INPUT',
+	// 		payload: value,
+	// 	})
+	// },
 	setLoading: () => {
 		dispatch({
 			type: 'IS_LOADING',

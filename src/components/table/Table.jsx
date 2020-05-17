@@ -10,6 +10,8 @@ function Table(props) {
 
 	const cars = searchList || carList
 
+	console.log('TABLE UPDATE: ', carList)
+
 	const optionsList = [
 		'car_number',
 		'car_brand',
@@ -22,7 +24,7 @@ function Table(props) {
 	return (
 		<table className="table table-dark table-hover table-bordered">
 			<thead>
-				<tr>
+				<tr className="table-header">
 					{optionsList.map(e => (
 						<TableHeader header={e} key={e} />
 					))}

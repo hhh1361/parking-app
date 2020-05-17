@@ -6,8 +6,8 @@ function Option(props) {
 	const {
 		field,
 		header,
-		input,
 		options,
+		input,
 		setInput,
 		setModels,
 		setLoading,
@@ -16,16 +16,13 @@ function Option(props) {
 	const onClickHandler = e => {
 		const id = e.target.classList[1]
 		const name = e.target.innerHTML
-		input[field] = { id, name }
-		setInput(null)
-		setInput(input)
+		const result = { ...input, [field]: { id, name } }
+		setInput(result)
 		if (field === 'car_brand') {
 			setLoading()
 			getAllBrandModels(setModels, false, id)
 		}
 	}
-
-	console.log('displayedOptions: ', options)
 
 	return (
 		<div className="input-group-prepend">
@@ -55,9 +52,7 @@ function Option(props) {
 }
 
 const mapStateToProps = state => {
-	return {
-		input: state.input,
-	}
+	return {}
 }
 const mapsDispatchToProps = dispatch => ({
 	setInput: value => {

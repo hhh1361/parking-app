@@ -1,4 +1,6 @@
-export default function postCar(func, method, api, body, carList) {
+import getAllCars from './getAllCars'
+
+export default function postCar(func, method, api, body, carList, carData) {
 	console.log('Loading start.')
 	const time = Date.now()
 
@@ -22,15 +24,28 @@ export default function postCar(func, method, api, body, carList) {
 				)
 				console.log(result)
 
-				// apply changes to carList locally
-				// for (let i = 0; i < carList.length; i++) {
-				// 	if (carList[i].id === result.car) {
-				// 		carList[i].car_territory = !carList[i].car_territory
-				// 		break
-				// 	}
-				// }
-				func([], true)
-				func(carList, false)
+				// entering and leaving the parking
+				if (api === 'api/stat/add/') {
+					// apply changes to carList locally
+					for (let i = 0; i < carList.length; i++) {
+						if (carList[i].id === result.car) {
+							carList[i].car_territory = !carList[i].car_territory
+							break
+						}
+					}
+					func([], true)
+					func(carList, false)
+				} else if (result.car_number[0] === 'Это поле обязательно.') {
+					// incorrect car_number case
+					console.log('Неверный гос. номер автомобиля')
+					func(carList, false)
+				} else {
+					// if response is ok
+					// repeat request to get all car data
+					getAllCars(func, false)
+				}
+
+				console.log('Автомобиль добавлен')
 			},
 
 			error => {

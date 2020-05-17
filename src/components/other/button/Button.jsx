@@ -1,11 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import './Button.css'
 
 function Button(props) {
 	const { target, text, btnClass } = props
 	return (
 		<button
-			className={`btn ${btnClass}`}
+			className={`btn btn-header btn-secondary btn-lg ${btnClass}`}
 			type="button"
 			data-toggle="collapse"
 			data-target={`#${target}`}

@@ -9,7 +9,7 @@ function TableHeader(props) {
 		car_brand: 'Марка',
 		car_model: 'Модель',
 		car_tenant: 'Арендатор',
-		car_territory: 'что-то',
+		car_territory: 'Автомобиль на территории',
 	}
 	let headerClassName
 	if (sort.field === header) {

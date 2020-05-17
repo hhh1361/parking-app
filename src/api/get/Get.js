@@ -18,7 +18,7 @@ export default function get(header, api, func, param) {
 		.then(
 			result => {
 				func(result, param)
-				console.log(`${header}. Response: `, result)
+				// console.log(`${header}. Response: `, result)
 				console.log(
 					`${header}. Loading completed in  ${(Date.now() - time) /
 						1000} seconds.`,
