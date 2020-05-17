@@ -5,16 +5,13 @@ import getAllBrandModels from '../../../../api/getAllBrandModels'
 function Option(props) {
 	const {
 		field,
+		header,
 		input,
-		brands,
-		models,
+		options,
 		setInput,
 		setModels,
 		setLoading,
 	} = props
-
-	const displayedOptions = field === 'car_brand' ? brands : models
-	const displayedHeader = field === 'car_brand' ? 'Марка' : 'Модель'
 
 	const onClickHandler = e => {
 		const id = e.target.classList[1]
@@ -28,7 +25,7 @@ function Option(props) {
 		}
 	}
 
-	console.log('displayedOptions: ', displayedOptions)
+	console.log('displayedOptions: ', options)
 
 	return (
 		<div className="input-group-prepend">
@@ -39,10 +36,10 @@ function Option(props) {
 				aria-haspopup="true"
 				aria-expanded="false"
 			>
-				{input[field].name || displayedHeader}
+				{input[field].name || header}
 			</button>
 			<div className="dropdown-menu">
-				{displayedOptions.map(i => (
+				{options.map(i => (
 					<a
 						className={`dropdown-item ${i.id}`}
 						href="#"
@@ -60,8 +57,6 @@ function Option(props) {
 const mapStateToProps = state => {
 	return {
 		input: state.input,
-		brands: state.brands,
-		models: state.models,
 	}
 }
 const mapsDispatchToProps = dispatch => ({
@@ -73,7 +68,7 @@ const mapsDispatchToProps = dispatch => ({
 	},
 	setModels: (models, isLoading) => {
 		dispatch({
-			type: 'SET_MODELS',
+			type: 'SET_CAR_MODELS',
 			payload: models,
 		})
 		dispatch({

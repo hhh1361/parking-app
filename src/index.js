@@ -15,6 +15,7 @@ const initialState = {
 	sort: { field: 'default', reverse: false },
 	brands: [],
 	models: [],
+	tenants: [],
 	input: {
 		car_brand: { id: null, name: null },
 		car_model: { id: null, name: null },
@@ -73,6 +74,11 @@ function information(state = initialState, action) {
 			return {
 				...state,
 				models: action.payload,
+			}
+		case 'SET_CAR_TENANTS':
+			return {
+				...state,
+				tenants: action.payload,
 			}
 		case 'SET_INPUT':
 			return {

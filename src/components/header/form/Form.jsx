@@ -6,7 +6,7 @@ import postCar from '../../../api/postCar'
 import './Form.css'
 
 function Form(props) {
-	const { carList, brands, setLoading, sendCarInfo } = props
+	const { carList, brands, models, tenants, setLoading, sendCarInfo } = props
 
 	console.log('brands: ', brands)
 	const data = {
@@ -42,41 +42,13 @@ function Form(props) {
 				</label>
 			</div>
 
-			<Option field="car_brand" />
-			<Option field="car_model" />
-
-			{/* <div className="input-group-prepend">
-				<button
-					className="btn btn-outline-secondary dropdown-toggle"
-					type="button"
-					data-toggle="dropdown"
-					aria-haspopup="true"
-					aria-expanded="false"
-				>
-					Марка
-				</button>
-				<div className="dropdown-menu">
-					{brands.map(i => {
-						return <Option field="car_brand" info={i} key={i.id} />
-					})}
-				</div>
-			</div> */}
+			<Option field="car_brand" options={brands} header="Марка" />
+			<Option field="car_model" options={models} header="Модель" />
+			<Option field="car_tenant" options={tenants} header="Организация" />
 
 			<div className="form-group">
 				<label htmlFor="car_model">
-					Модель
-					<input
-						type="text"
-						className="form-control"
-						id="car_model"
-						placeholder="Camry"
-						onKeyUp={inputHandler}
-					/>
-				</label>
-			</div>
-			<div className="form-group">
-				<label htmlFor="car_model">
-					Модель
+					Организация
 					<input
 						type="text"
 						className="form-control"
@@ -95,6 +67,8 @@ const mapStateToProps = state => {
 	return {
 		carList: state.carList,
 		brands: state.brands,
+		models: state.models,
+		tenants: state.tenants,
 	}
 }
 const mapsDispatchToProps = dispatch => ({

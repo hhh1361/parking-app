@@ -9,13 +9,20 @@ import './App.css'
 import getAllCars from './api/getAllCars'
 import getCarsOnTerritory from './api/getCarsOnTerritory'
 import getAllCarBrands from './api/getAllCarBrands'
+import getAllTenants from './api/getAllTenants'
 
 function App(props) {
-	const { getCarList, getCarListOnTerritory, setCarBrands } = props
+	const {
+		getCarList,
+		getCarListOnTerritory,
+		setCarBrands,
+		setCarTenants,
+	} = props
 
 	getAllCars(getCarList, false)
 	getCarsOnTerritory(getCarListOnTerritory)
 	getAllCarBrands(setCarBrands)
+	getAllTenants(setCarTenants)
 
 	return (
 		<div className="container">
@@ -54,6 +61,12 @@ const mapsDispatchToProps = dispatch => ({
 	setCarBrands: value => {
 		dispatch({
 			type: 'SET_CAR_BRANDS',
+			payload: value,
+		})
+	},
+	setCarTenants: value => {
+		dispatch({
+			type: 'SET_CAR_TENANTS',
 			payload: value,
 		})
 	},
