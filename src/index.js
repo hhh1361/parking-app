@@ -9,10 +9,11 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 const initialState = {
 	carList: [],
-	isLoading: true,
+	searchList: null,
+	onTerritory: [],
 	modal: { state: false, field: undefined, id: undefined },
 	sort: { field: 'default', reverse: false },
-	onTerritory: [],
+	isLoading: true,
 }
 
 function information(state = initialState, action) {
@@ -50,13 +51,10 @@ function information(state = initialState, action) {
 				...state,
 				onTerritory: action.payload,
 			}
-		case 'ADD_TIMEZONE':
+		case 'SET_SEARCH_LIST':
 			return {
 				...state,
-				information: {
-					...state.information,
-					select: { ...state.information.select, timezone: action.payload },
-				},
+				searchList: action.payload,
 			}
 		default:
 			return state

@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Form from './form/Form'
+import Search from './search/Search'
 import Button from '../other/button/Button'
 import './Header.css'
 
@@ -35,7 +36,7 @@ function Header(props) {
 					<div className="col">
 						<div className="collapse multi-collapse" id="multiCollapseExample2">
 							<div className="card card-body">
-								<Form />
+								<Search />
 							</div>
 						</div>
 					</div>
