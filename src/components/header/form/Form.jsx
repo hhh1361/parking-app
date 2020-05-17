@@ -13,6 +13,7 @@ function Form(props) {
 		tenants,
 		input,
 		setLoading,
+		setModal,
 		sendCarInfo,
 	} = props
 
@@ -31,7 +32,7 @@ function Form(props) {
 		}
 		const api = 'api/cars/add/'
 		setLoading(true)
-		postCar(sendCarInfo, 'POST', api, data, carList, input)
+		postCar(sendCarInfo, 'POST', api, data, carList, setModal)
 	}
 
 	return (
@@ -93,6 +94,12 @@ const mapsDispatchToProps = dispatch => ({
 		dispatch({
 			type: 'IS_LOADING',
 			payload: true,
+		})
+	},
+	setModal: value => {
+		dispatch({
+			type: 'SET_MODAL',
+			payload: value,
 		})
 	},
 })

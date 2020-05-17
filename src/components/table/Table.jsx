@@ -10,8 +10,6 @@ function Table(props) {
 
 	const cars = searchList || carList
 
-	console.log('TABLE UPDATE: ', carList)
-
 	const optionsList = [
 		'car_number',
 		'car_brand',

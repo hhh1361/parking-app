@@ -65,59 +65,70 @@ function Modal(props) {
 			{modal.state ? (
 				<div id="myModal">
 					<div className="modal-dialog">
-						<div className="modal-content">
-							<div className="modal-header">
-								<h4 className="modal-title">Фильтр</h4>
-								<button type="button" className="close" onClick={closeModal}>
-									&times;
-								</button>
-							</div>
-
-							<div className="modal-body">
-								<div className="container d-flex justify-content-between">
-									<button
-										type="button"
-										className="btn btn-primary"
-										onClick={setFilter}
-									>
-										{`Установить фильтр по значению ${modal.value}`}
-									</button>
-									<button
-										type="button"
-										className="btn btn-danger"
-										onClick={resetFilter}
-									>
-										Сбросить фильтр
+						{modal.field !== 'input-modal' ? (
+							<div className="modal-content">
+								<div className="modal-header">
+									<h4 className="modal-title">Фильтр</h4>
+									<button type="button" className="close" onClick={closeModal}>
+										&times;
 									</button>
 								</div>
-							</div>
 
-							{modal.field === 'territory' ? (
-								<div className="modal-content">
-									<div className="modal-header">
-										<h4 className="modal-title">Действие с автомобилем</h4>
+								<div className="modal-body">
+									<div className="container d-flex justify-content-between">
+										<button
+											type="button"
+											className="btn btn-primary"
+											onClick={setFilter}
+										>
+											{`Установить фильтр по значению ${modal.value}`}
+										</button>
+										<button
+											type="button"
+											className="btn btn-danger"
+											onClick={resetFilter}
+										>
+											Сбросить фильтр
+										</button>
 									</div>
-									<div className="modal-body">
-										<div className="container d-flex justify-content-between">
-											<button
-												type="button"
-												className="btn btn-primary"
-												onClick={onTerritory}
-											>
-												Прибытиe на парковку
-											</button>
-											<button
-												type="button"
-												className="btn btn-danger"
-												onClick={fromTerritory}
-											>
-												Убытие с парковки
-											</button>
+								</div>
+
+								{modal.field === 'territory' ? (
+									<div className="modal-content">
+										<div className="modal-header">
+											<h4 className="modal-title">Действие с автомобилем</h4>
+										</div>
+										<div className="modal-body">
+											<div className="container d-flex justify-content-between">
+												<button
+													type="button"
+													className="btn btn-primary"
+													onClick={onTerritory}
+												>
+													Прибытиe на парковку
+												</button>
+												<button
+													type="button"
+													className="btn btn-danger"
+													onClick={fromTerritory}
+												>
+													Убытие с парковки
+												</button>
+											</div>
 										</div>
 									</div>
+								) : null}
+							</div>
+						) : (
+							<div className="modal-content">
+								<div className="modal-header">
+									<h4 className="modal-title">{modal.id}</h4>
+									<button type="button" className="close" onClick={closeModal}>
+										&times;
+									</button>
 								</div>
-							) : null}
-						</div>
+							</div>
+						)}
 					</div>
 				</div>
 			) : null}

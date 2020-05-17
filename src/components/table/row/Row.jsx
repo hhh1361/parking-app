@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 import React from 'react'
 import { connect } from 'react-redux'
+import './Row.css'
 
 function Row(props) {
 	const { info, changeModal } = props
@@ -13,6 +14,7 @@ function Row(props) {
 		id,
 	} = info
 	const territoryValue = car_territory ? 'Да' : 'Нет'
+	const rowClassname = car_territory ? 'highlighted-row' : 'usual-row'
 	const filter = e => {
 		e.preventDefault()
 		const modalObject = {
@@ -27,7 +29,7 @@ function Row(props) {
 
 	return (
 		<>
-			<tr>
+			<tr className={rowClassname}>
 				<td>{car_number}</td>
 				<td>{car_brand ? car_brand.name : null}</td>
 				<td>{car_model ? car_model.name : null}</td>

@@ -1,6 +1,13 @@
 import getAllCars from './getAllCars'
 
-export default function postCar(func, method, api, body, carList, carData) {
+export default function postCar(
+	func,
+	method,
+	api,
+	body,
+	carList,
+	modalFunction,
+) {
 	console.log('Loading start.')
 	const time = Date.now()
 
@@ -22,7 +29,6 @@ export default function postCar(func, method, api, body, carList, carData) {
 				console.log(
 					`Loading completed in  ${(Date.now() - time) / 1000} seconds.`,
 				)
-				console.log(result)
 
 				// entering and leaving the parking
 				if (api === 'api/stat/add/') {
@@ -35,17 +41,51 @@ export default function postCar(func, method, api, body, carList, carData) {
 					}
 					func([], true)
 					func(carList, false)
-				} else if (result.car_number[0] === 'Это поле обязательно.') {
-					// incorrect car_number case
-					console.log('Неверный гос. номер автомобиля')
-					func(carList, false)
-				} else {
-					// if response is ok
-					// repeat request to get all car data
-					getAllCars(func, false)
 				}
 
-				console.log('Автомобиль добавлен')
+				// adding new car cases
+				if (api === 'api/cars/add/') {
+					// incorrect car_number case
+					if (result.car_number) {
+						if (result.car_number[0] === 'Это поле обязательно.') {
+							console.log('Неверный гос. номер автомобиля')
+							func(carList, false)
+							modalFunction({
+								state: true,
+								field: 'input-modal',
+								id: 'Неверный гос. номер автомобиля',
+							})
+						} else {
+							// repeat request to get all car data
+							getAllCars(func, false)
+							modalFunction({
+								state: true,
+								field: 'input-modal',
+								id: 'Автомобиль добавлен',
+							})
+							console.log('Автомобиль добавлен')
+						}
+					} else if (result.car_tenant) {
+						if (result.car_tenant[0] === 'Это поле не может быть null.') {
+							console.log('Поле "Организация" должно быть заполнено')
+							func(carList, false)
+							modalFunction({
+								state: true,
+								field: 'input-modal',
+								id: 'Поле "Организация" должно быть заполнено',
+							})
+						} else {
+							// repeat request to get all car data
+							getAllCars(func, false)
+							modalFunction({
+								state: true,
+								field: 'input-modal',
+								id: 'Автомобиль добавлен',
+							})
+							console.log('Автомобиль добавлен')
+						}
+					}
+				}
 			},
 
 			error => {
