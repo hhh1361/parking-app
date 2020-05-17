@@ -27,9 +27,7 @@ function App(props) {
 	return (
 		<div className="container">
 			<Header />
-
 			<Table />
-
 			<Spinner />
 			<Modal />
 		</div>

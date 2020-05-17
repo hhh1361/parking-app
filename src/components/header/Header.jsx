@@ -13,27 +13,29 @@ function Header(props) {
 					<Button
 						text="Добавить новый автомобиль"
 						btnClass="btn-primary"
-						target="multiCollapseExample1"
+						target="input-new-car"
 					/>
 				</div>
 				<div className="col d-flex justify-content-center">
 					<Button
 						text="Поиск по гос. номеру"
 						btnClass="btn-primary"
-						target="multiCollapseExample2"
+						target="search-car"
 					/>
 				</div>
 			</div>
 			<div className="row">
 				<div className="col">
-					<div className="collapse multi-collapse" id="multiCollapseExample1">
-						<div className="card card-body text-white bg-dark mb-3">
-							<Form />
+					<div className="d-flex justify-content-center">
+						<div className="collapse multi-collapse" id="input-new-car">
+							<div className="card card-body text-white bg-dark mb-3">
+								<Form />
+							</div>
 						</div>
 					</div>
 				</div>
 				<div className="col">
-					<div className="collapse multi-collapse" id="multiCollapseExample2">
+					<div className="collapse multi-collapse" id="search-car">
 						<div className="card card-body text-white bg-dark mb-3">
 							<Search />
 						</div>

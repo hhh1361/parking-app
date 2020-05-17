@@ -36,18 +36,13 @@ function Form(props) {
 
 	return (
 		<div className="container">
-			<div className="form-group">
-				<label htmlFor="car_number">
-					Гос. номер
-					<input
-						type="text"
-						className="form-control"
-						id="car_number"
-						placeholder="0000 АА-0"
-						onKeyUp={inputHandler}
-					/>
-				</label>
-			</div>
+			<input
+				type="text"
+				className="form-control"
+				id="car_number"
+				placeholder="Гос. номер"
+				onKeyUp={inputHandler}
+			/>
 
 			<Option field="car_brand" input={input} options={brands} header="Марка" />
 			<Option
@@ -63,7 +58,13 @@ function Form(props) {
 				header="Организация"
 			/>
 
-			<div onClick={sendInfo}>КНОПКА</div>
+			<button
+				type="button"
+				className="btn btn-secondary btn-lg"
+				onClick={sendInfo}
+			>
+				Добавить
+			</button>
 		</div>
 	)
 }
@@ -88,12 +89,6 @@ const mapsDispatchToProps = dispatch => ({
 			payload: isLoading,
 		})
 	},
-	// setInput: value => {
-	// 	dispatch({
-	// 		type: 'SET_INPUT',
-	// 		payload: value,
-	// 	})
-	// },
 	setLoading: () => {
 		dispatch({
 			type: 'IS_LOADING',

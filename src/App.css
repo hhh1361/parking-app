@@ -8,3 +8,13 @@ input {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   text-shadow: black 0px 0px 3px;
 } */
+
+.btn-outline-secondary{
+color: #8c8d8f;
+}
+
+@media (max-width: 760px) {
+  #root {
+    width: 760px
+  }
+}
