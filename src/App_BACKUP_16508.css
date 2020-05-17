@@ -7,6 +7,7 @@ input {
   text-transform: capitalize;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   text-shadow: black 0px 0px 3px;
+<<<<<<< HEAD
 } */
 
 .btn-outline-secondary{
@@ -18,3 +19,6 @@ color: #8c8d8f;
     width: 760px
   }
 }
+=======
+} */
+>>>>>>> 3d23430f0d5aa08b0491f5f7480c1daaa60699fb
