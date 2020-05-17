@@ -1,5 +1,5 @@
-export default function get(api, func, param) {
-	console.log('Loading start.')
+export default function get(header, api, func, param) {
+	console.log(`${header}. Loading start.`)
 	const time = Date.now()
 
 	const proxy = 'https://cors-anywhere.herokuapp.com/'
@@ -18,15 +18,18 @@ export default function get(api, func, param) {
 		.then(
 			result => {
 				func(result, param)
+				console.log(`${header}. Response: `, result)
 				console.log(
-					`Loading completed in  ${(Date.now() - time) / 1000} seconds.`,
+					`${header}. Loading completed in  ${(Date.now() - time) /
+						1000} seconds.`,
 				)
 			},
 
 			error => {
 				console.log('Error: ', error)
 				console.log(
-					`Loading completed in  ${(Date.now() - time) / 1000} seconds.`,
+					`${header}. Loading completed in  ${(Date.now() - time) /
+						1000} seconds.`,
 				)
 			},
 		)

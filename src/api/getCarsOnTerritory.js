@@ -2,5 +2,6 @@ import get from './get/get'
 
 export default function getCarsOnTerritory(func, param) {
 	const api = 'api/stat/here/'
-	get(api, func, param)
+	const header = 'Cars on territory'
+	get(header, api, func, param)
 }

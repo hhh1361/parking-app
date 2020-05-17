@@ -19,24 +19,19 @@ function Table(props) {
 	]
 	const sortedArray = sortSourceData(sort, cars)
 
-	console.log('Rerender Table', cars)
 	return (
-		<div className="container">
-			<table className="table table-dark table-hover table-bordered">
-				<thead>
-					<tr>
-						{optionsList.map(e => (
-							<TableHeader header={e} key={e} />
-						))}
-					</tr>
-				</thead>
-				<tbody>
-					{cars.length
-						? sortedArray.map(e => <Row info={e} key={e.id} />)
-						: null}
-				</tbody>
-			</table>
-		</div>
+		<table className="table table-dark table-hover table-bordered">
+			<thead>
+				<tr>
+					{optionsList.map(e => (
+						<TableHeader header={e} key={e} />
+					))}
+				</tr>
+			</thead>
+			<tbody>
+				{cars.length ? sortedArray.map(e => <Row info={e} key={e.id} />) : null}
+			</tbody>
+		</table>
 	)
 }
 

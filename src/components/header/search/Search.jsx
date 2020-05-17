@@ -16,7 +16,6 @@ function Search(props) {
 		} else {
 			setSearchList(null)
 		}
-		console.log(filtered)
 	}
 
 	return <input placeholder="0000 AA-0" onKeyUp={doSearch} type="text" />

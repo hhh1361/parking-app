@@ -13,6 +13,14 @@ const initialState = {
 	onTerritory: [],
 	modal: { state: false, field: undefined, id: undefined },
 	sort: { field: 'default', reverse: false },
+	brands: [],
+	models: [],
+	input: {
+		car_brand: { id: null, name: null },
+		car_model: { id: null, name: null },
+		car_tenant: { id: null, name: null },
+		car_number: '',
+	},
 	isLoading: true,
 }
 
@@ -55,6 +63,21 @@ function information(state = initialState, action) {
 			return {
 				...state,
 				searchList: action.payload,
+			}
+		case 'SET_CAR_BRANDS':
+			return {
+				...state,
+				brands: action.payload,
+			}
+		case 'SET_CAR_MODELS':
+			return {
+				...state,
+				models: action.payload,
+			}
+		case 'SET_INPUT':
+			return {
+				...state,
+				input: action.payload,
 			}
 		default:
 			return state

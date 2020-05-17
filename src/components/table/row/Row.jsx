@@ -14,7 +14,6 @@ function Row(props) {
 	} = info
 	const territoryValue = car_territory ? 'тут' : '-'
 	const filter = e => {
-		console.log(id)
 		e.preventDefault()
 		const modalObject = {
 			state: true,

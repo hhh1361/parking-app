@@ -1,10 +1,9 @@
-export default function postCar(func, body, param, carList, method) {
+export default function postCar(func, method, api, body, carList) {
 	console.log('Loading start.')
 	const time = Date.now()
 
 	const proxy = 'https://cors-anywhere.herokuapp.com/'
 	const url = new URL('http://80.249.84.47:11000/')
-	const api = 'api/stat/add/'
 
 	fetch(proxy + url + api, {
 		method,
@@ -21,20 +20,21 @@ export default function postCar(func, body, param, carList, method) {
 				console.log(
 					`Loading completed in  ${(Date.now() - time) / 1000} seconds.`,
 				)
+				console.log(result)
 
 				// apply changes to carList locally
-				for (let i = 0; i < carList.length; i++) {
-					if (carList[i].id === result.car) {
-						carList[i].car_territory = !carList[i].car_territory
-						break
-					}
-				}
+				// for (let i = 0; i < carList.length; i++) {
+				// 	if (carList[i].id === result.car) {
+				// 		carList[i].car_territory = !carList[i].car_territory
+				// 		break
+				// 	}
+				// }
 				func([], true)
-				func(carList, param)
+				func(carList, false)
 			},
 
 			error => {
-				func(carList, param)
+				func(carList, false)
 				console.log('Error: ', error)
 				console.log(
 					`Loading completed in  ${(Date.now() - time) / 1000} seconds.`,

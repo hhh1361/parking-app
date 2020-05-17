@@ -17,6 +17,8 @@ function Modal(props) {
 		setCarOnTerrytory,
 	} = props
 
+	const api = 'api/stat/add/'
+
 	const setFilter = () => {
 		setLoading(true)
 
@@ -43,7 +45,7 @@ function Modal(props) {
 		}
 
 		setLoading(true)
-		postCar(setCarOnTerrytory, body, false, carList, 'POST')
+		postCar(setCarOnTerrytory, 'POST', api, body, carList)
 		closeModal()
 	}
 	const fromTerritory = () => {
@@ -54,7 +56,7 @@ function Modal(props) {
 		}
 
 		setLoading(true)
-		postCar(setCarOnTerrytory, body, false, carList, 'PUT')
+		postCar(setCarOnTerrytory, 'PUT', api, body, carList)
 		closeModal()
 	}
 
