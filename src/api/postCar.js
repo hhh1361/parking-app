@@ -14,8 +14,6 @@ export default function postCar(
 	const proxy = 'https://cors-anywhere.herokuapp.com/'
 	const url = new URL('http://80.249.84.47:11000/')
 
-	console.log(proxy + url + api)
-
 	fetch(proxy + url + api, {
 		method,
 		headers: new Headers({
