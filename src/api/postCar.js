@@ -11,10 +11,9 @@ export default function postCar(
 	console.log('Loading start.')
 	const time = Date.now()
 
-	const proxy = 'https://cors-anywhere.herokuapp.com/'
-	const url = new URL('http://80.249.84.47:11000/')
+	const url = new URL('http://80.249.84.47:11000/api/cars/add/')
 
-	fetch(proxy + url + api, {
+	fetch(url + api, {
 		method,
 		headers: new Headers({
 			'Content-Type': 'application/json',

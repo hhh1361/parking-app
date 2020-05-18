@@ -2,10 +2,9 @@ export default function get(header, api, func, param) {
 	console.log(`${header}. Loading start.`)
 	const time = Date.now()
 
-	const proxy = 'https://cors-anywhere.herokuapp.com/'
 	const url = new URL('http://80.249.84.47:11000/')
 
-	fetch(proxy + url + api, {
+	fetch(url + api, {
 		method: 'GET',
 		headers: new Headers({
 			Accept: 'application/json',
