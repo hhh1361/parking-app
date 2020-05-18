@@ -39,7 +39,7 @@ function Option(props) {
 				{options.map(i => (
 					<a
 						className={`dropdown-item ${i.id}`}
-						href="#"
+						href="/#"
 						onClick={onClickHandler}
 						key={i.id}
 					>

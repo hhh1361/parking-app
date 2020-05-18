@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 export default async function combinedGet(api1, api2, func, param) {
-	console.log('Loading start.')
+	console.log('All cars. Loading start.')
 	const time = Date.now()
 
 	const proxy = 'https://cors-anywhere.herokuapp.com/'
@@ -22,7 +22,9 @@ export default async function combinedGet(api1, api2, func, param) {
 			}),
 		}),
 	]).then(res => {
-		console.log(`Loading completed in  ${(Date.now() - time) / 1000} seconds.`)
+		console.log(
+			`All cars. Loading completed in  ${(Date.now() - time) / 1000} seconds.`,
+		)
 		return res.map(e => e.json())
 	})
 

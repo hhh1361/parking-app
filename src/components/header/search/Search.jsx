@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import './Search.css'
 
 function Search(props) {
-	const { carList, searchList, setSearchList } = props
+	const { carList, setSearchList } = props
 	const doSearch = e => {
 		const value = e.target.value.toLowerCase()
 
