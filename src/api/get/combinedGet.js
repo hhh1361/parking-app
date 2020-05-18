@@ -3,17 +3,18 @@ export default async function combinedGet(api1, api2, func, param) {
 	console.log('All cars. Loading start.')
 	const time = Date.now()
 
+	const proxy = 'https://cors-anywhere.herokuapp.com/'
 	const url = new URL('http://80.249.84.47:11000/')
 
 	const response = await Promise.all([
-		fetch(url + api1, {
+		fetch(proxy + url + api1, {
 			method: 'GET',
 			headers: new Headers({
 				Accept: 'application/json',
 				'Content-Type': 'application/json',
 			}),
 		}),
-		fetch(url + api2, {
+		fetch(proxy + url + api2, {
 			method: 'GET',
 			headers: new Headers({
 				Accept: 'application/json',
