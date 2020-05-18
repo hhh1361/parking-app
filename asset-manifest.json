@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/parking-app/static/css/main.3a31d6aa.chunk.css",
-    "main.js": "/parking-app/static/js/main.525ae266.chunk.js",
-    "main.js.map": "/parking-app/static/js/main.525ae266.chunk.js.map",
+    "main.js": "/parking-app/static/js/main.dddb069e.chunk.js",
+    "main.js.map": "/parking-app/static/js/main.dddb069e.chunk.js.map",
     "runtime-main.js": "/parking-app/static/js/runtime-main.40bcc960.js",
     "runtime-main.js.map": "/parking-app/static/js/runtime-main.40bcc960.js.map",
     "static/css/2.af3c1da9.chunk.css": "/parking-app/static/css/2.af3c1da9.chunk.css",
     "static/js/2.240c3efe.chunk.js": "/parking-app/static/js/2.240c3efe.chunk.js",
     "static/js/2.240c3efe.chunk.js.map": "/parking-app/static/js/2.240c3efe.chunk.js.map",
     "index.html": "/parking-app/index.html",
-    "precache-manifest.6d4a1d915210b995000d93e0659663b5.js": "/parking-app/precache-manifest.6d4a1d915210b995000d93e0659663b5.js",
+    "precache-manifest.c435a764dfefb64b893108cfdf97bc25.js": "/parking-app/precache-manifest.c435a764dfefb64b893108cfdf97bc25.js",
     "service-worker.js": "/parking-app/service-worker.js",
     "static/css/2.af3c1da9.chunk.css.map": "/parking-app/static/css/2.af3c1da9.chunk.css.map",
     "static/css/main.3a31d6aa.chunk.css.map": "/parking-app/static/css/main.3a31d6aa.chunk.css.map",
@@ -20,6 +20,6 @@
     "static/css/2.af3c1da9.chunk.css",
     "static/js/2.240c3efe.chunk.js",
     "static/css/main.3a31d6aa.chunk.css",
-    "static/js/main.525ae266.chunk.js"
+    "static/js/main.dddb069e.chunk.js"
   ]
 }
