@@ -37,14 +37,13 @@ function Option(props) {
 			</button>
 			<div className="dropdown-menu">
 				{options.map(i => (
-					<a
+					<div
 						className={`dropdown-item ${i.id}`}
-						href="/#"
 						onClick={onClickHandler}
 						key={i.id}
 					>
 						{i.name}
-					</a>
+					</div>
 				))}
 			</div>
 		</div>

@@ -18,6 +18,10 @@ function Modal(props) {
 	} = props
 
 	const api = 'api/stat/add/'
+	const classNameModal =
+		modal.id === 'Автомобиль добавлен'
+			? 'modal-header green'
+			: 'modal-header red'
 
 	const setFilter = () => {
 		setLoading(true)
@@ -121,7 +125,7 @@ function Modal(props) {
 							</div>
 						) : (
 							<div className="modal-content">
-								<div className="modal-header">
+								<div className={classNameModal}>
 									<h4 className="modal-title">{modal.id}</h4>
 									<button type="button" className="close" onClick={closeModal}>
 										&times;
